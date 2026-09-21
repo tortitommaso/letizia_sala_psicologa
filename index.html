@@ -1,1 +1,374 @@
-<h2>ciao</h2>
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Letizia Sala</title>
+  <style>
+    :root {
+      --bg: #fff8f4;
+      --paper: #fffdfb;
+      --ink: #29202d;
+      --muted: #665b69;
+      --coral: #d95f76;
+      --coral-dark: #a93d58;
+      --plum: #70466d;
+      --teal: #408c87;
+      --teal-pale: #d9eeea;
+      --rose-pale: #f7dce2;
+      --apricot: #f3b66f;
+      --line: rgba(38, 33, 31, .12);
+      --shadow: 0 24px 70px rgba(71, 54, 48, .12);
+      --max: 1180px;
+    }
+
+    * { box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at 92% 5%, rgba(217, 238, 234, .95), transparent 25rem),
+        radial-gradient(circle at 8% 20%, rgba(247, 220, 226, .85), transparent 23rem),
+        var(--bg);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      font-size: 17px;
+      line-height: 1.78;
+    }
+
+    a { color: inherit; }
+    img { max-width: 100%; display: block; }
+
+    .page {
+      width: min(calc(100% - 40px), var(--max));
+      margin: 0 auto;
+      padding: 38px 0 72px;
+    }
+
+    .hero {
+      min-height: 78vh;
+      display: grid;
+      grid-template-columns: minmax(0, 1.12fr) minmax(320px, .88fr);
+      align-items: center;
+      gap: clamp(42px, 7vw, 90px);
+      padding: clamp(38px, 7vw, 92px) 0 clamp(64px, 9vw, 110px);
+    }
+
+    .hero-copy {
+      position: relative;
+      z-index: 2;
+    }
+
+    h1 {
+      margin: 0 0 30px;
+      max-width: 720px;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(4rem, 8vw, 7.2rem);
+      font-weight: 500;
+      line-height: .96;
+      letter-spacing: -.055em;
+    }
+
+    h1::after {
+      content: "";
+      display: block;
+      width: 92px;
+      height: 4px;
+      margin-top: 28px;
+      border-radius: 999px;
+      background: linear-gradient(90deg, var(--coral), var(--apricot));
+    }
+
+    .intro {
+      max-width: 720px;
+      margin: 0;
+      color: #403a36;
+      font-size: clamp(1.08rem, 1.6vw, 1.3rem);
+    }
+
+    .portrait-shell {
+      position: relative;
+      justify-self: end;
+      width: min(100%, 430px);
+    }
+
+    .portrait-shell::before {
+      content: "";
+      position: absolute;
+      width: 56%;
+      aspect-ratio: 1;
+      right: -10%;
+      top: -9%;
+      border-radius: 50%;
+      background: var(--teal-pale);
+      z-index: 0;
+    }
+
+    .portrait-shell::after {
+      content: "";
+      position: absolute;
+      width: 38%;
+      aspect-ratio: 1;
+      left: -10%;
+      bottom: 4%;
+      border-radius: 50%;
+      background: var(--rose-pale);
+      z-index: 0;
+    }
+
+    .portrait-frame {
+      position: relative;
+      z-index: 1;
+      padding: 12px;
+      border-radius: 210px 210px 34px 34px;
+      background: rgba(252, 250, 247, .78);
+      border: 1px solid rgba(255, 255, 255, .9);
+      box-shadow: var(--shadow);
+    }
+
+    .portrait-frame img {
+      width: 100%;
+      aspect-ratio: 4 / 5;
+      object-fit: cover;
+      object-position: center;
+      border-radius: 198px 198px 26px 26px;
+      background: #ddd5ce;
+    }
+
+    .content {
+      display: grid;
+      gap: 30px;
+    }
+
+    .block {
+      position: relative;
+      padding: clamp(28px, 5vw, 58px);
+      border: 1px solid rgba(255,255,255,.82);
+      background: rgba(252, 250, 247, .74);
+      box-shadow: 0 18px 55px rgba(71, 54, 48, .07);
+      border-radius: 28px;
+      overflow: hidden;
+      backdrop-filter: blur(8px);
+    }
+
+    .block:nth-child(even) {
+      margin-left: clamp(0px, 5vw, 74px);
+    }
+
+    .block:nth-child(odd) {
+      margin-right: clamp(0px, 5vw, 74px);
+    }
+
+    .block::before {
+      content: "";
+      position: absolute;
+      width: 10px;
+      height: 78px;
+      left: 0;
+      top: 38px;
+      border-radius: 0 10px 10px 0;
+      background: linear-gradient(90deg, var(--coral), var(--apricot));
+      opacity: .8;
+    }
+
+    .block:nth-child(2)::before { background: var(--teal); }
+    .block:nth-child(3)::before { background: var(--plum); }
+
+    .block h2 {
+      margin: 0 0 24px;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(2rem, 4vw, 3rem);
+      line-height: 1.05;
+      letter-spacing: -.03em;
+      color: var(--plum);
+    }
+
+    .block:nth-child(2) h2 { color: var(--teal); }
+    .block:nth-child(3) h2 { color: var(--coral-dark); }
+
+    .block p {
+      max-width: 930px;
+      margin: 0 0 1.25em;
+      color: #403a36;
+      font-size: clamp(1rem, 1.35vw, 1.12rem);
+    }
+
+    .block p:last-child { margin-bottom: 0; }
+
+    .contact {
+      margin-top: 30px;
+      padding: clamp(32px, 6vw, 66px);
+      border-radius: 30px;
+      background:
+        radial-gradient(circle at 92% 12%, rgba(255,255,255,.14), transparent 18rem),
+        linear-gradient(135deg, #6f426d 0%, #a94765 48%, #317d79 100%);
+      color: #fff;
+      box-shadow: 0 28px 80px rgba(64, 46, 42, .19);
+    }
+
+    .contact h2 {
+      margin: 0 0 22px;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(2.2rem, 4vw, 3.3rem);
+      line-height: 1;
+      letter-spacing: -.035em;
+    }
+
+    .contact p {
+      max-width: 940px;
+      margin: 0;
+      color: rgba(255,255,255,.94);
+      font-size: clamp(1.05rem, 1.45vw, 1.19rem);
+    }
+
+    .contact strong { color: #fff; }
+
+    .links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 34px;
+      align-items: stretch;
+    }
+
+    .links a {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      min-height: 50px;
+      padding: 12px 19px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,.3);
+      background: rgba(255,255,255,.08);
+      color: #fff;
+      text-decoration: none;
+      font-weight: 700;
+      overflow-wrap: anywhere;
+      transition: transform .18s ease, background .18s ease;
+    }
+
+    .links a:first-child {
+      background: #fff;
+      color: var(--coral-dark);
+      border-color: #fff;
+    }
+
+    .links a:hover {
+      transform: translateY(-2px);
+      background: rgba(255,255,255,.16);
+    }
+
+    .links a:first-child:hover { background: #fff1f4; }
+
+    .links svg {
+      width: 20px;
+      height: 20px;
+      flex: 0 0 auto;
+      fill: currentColor;
+    }
+
+    .links .email-link {
+      min-height: 58px;
+      padding-inline: 24px;
+      box-shadow: 0 12px 30px rgba(40, 20, 35, .18);
+    }
+
+    @media (max-width: 850px) {
+      .page { width: min(calc(100% - 28px), var(--max)); }
+      .hero {
+        min-height: auto;
+        grid-template-columns: 1fr;
+        padding-top: 36px;
+        gap: 42px;
+      }
+      .hero-copy { order: 1; }
+      .portrait-shell {
+        order: 2;
+        justify-self: center;
+        width: min(84vw, 420px);
+      }
+      .block:nth-child(even),
+      .block:nth-child(odd) {
+        margin-left: 0;
+        margin-right: 0;
+      }
+    }
+
+    @media (max-width: 560px) {
+      body { font-size: 16px; }
+      .page { width: min(calc(100% - 20px), var(--max)); padding-top: 18px; }
+      .hero { padding-top: 22px; padding-bottom: 62px; }
+      h1 { font-size: clamp(3.4rem, 18vw, 5rem); }
+      .block, .contact { border-radius: 22px; }
+      .links { flex-direction: column; }
+      .links a { width: 100%; justify-content: center; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <section class="hero">
+      <div class="hero-copy">
+        <h1>Ciao, sono Letizia!</h1>
+        <p class="intro">Sono la dottoressa Letizia Sala, psicologa iscritta all'Ordine Psicologi della Lombardia (n° iscrizione 19650) e psicoterapeuta della gestalt in formazione.</p>
+      </div>
+
+      <div class="portrait-shell">
+        <div class="portrait-frame">
+          <img src="images/profile.jpg" alt="Letizia Sala">
+        </div>
+      </div>
+    </section>
+
+    <div class="content">
+      <section class="block">
+        <h2>Il mio lavoro</h2>
+        <p>Con studio a Sesto San Giovanni (Milano), mi occupo di sostegno psicologico a persone adulte con disturbi di ansia e dell’umore, sofferenze relazionali, dipendenze affettive, disturbi psicosomatici e patologie croniche.</p>
+        <p>Una delle mie aree di intervento è il supporto psicologico a pazienti che convivono con il disagio e la sofferenza fisica, interiore e relazionale legata a disturbi come l’endometriosi, la vulvodinia, candide e cistiti recidivanti, neuropatia del pudendo.</p>
+        <p>Mi occupo inoltre di career counseling.</p>
+        <p>Integro nella mia pratica clinica strumenti di consapevolezza corporea, tecniche di rilassamento e lavoro esperienziale per aiutare le persone a ricontattare il proprio corpo come risorsa di equilibrio e ascolto di sé.</p>
+      </section>
+
+      <section class="block">
+        <h2>Formazione e approccio</h2>
+        <p>Il legame tra mente e corpo è un filo rosso che attraversa tutta la mia formazione che si fonda su una visione integrata della persona, che tiene insieme corpo, emozioni e contesto di vita.</p>
+        <p>Ho completato diversi percorsi formativi in psicosomatica e tecniche di rilassamento e training autogeno.</p>
+        <p>Ho approfondito anche la dimensione del dolore uro-genito pelvico e della vulvodinia, attraverso formazioni sull’approccio bio-psico-sociale al dolore cronico.</p>
+        <p>Parallelamente mi sono formata sull’orientamento professionale e sul career counseling.</p>
+        <p>Fuori dal lavoro, coltivo passioni che nutrono la mia curiosità e la mia presenza: la biodanza, la meditazione (vipassana, anapasati, metta), la scrittura poetica e il caviardage, la fotografia.</p>
+      </section>
+
+      <section class="block">
+        <h2>Il mio percorso professionale</h2>
+        <p>Il mio percorso professionale unisce l’esperienza nel sociale, la clinica e la formazione personale sul corpo e le emozioni.</p>
+        <p>Credo in una psicologia vicina alle persone e alle comunità, capace di promuovere consapevolezza, autonomia e possibilità di cambiamento reale.</p>
+        <p>Ho lavorato per dieci anni in progetti di prevenzione selettiva rispetto al risky drinking e alla guida in stato di ebbrezza rivolti a giovani adulti e in progetti di inclusione sociale a favore di persone in condizioni di grave marginalità. Mi sono anche occupata di sostegno alla genitorialità e accompagnamento all’autonomia per giovani adulti con diagnosi psichiatrica attraverso interventi domiciliari in collaborazione con i servizi di tutela minori.</p>
+        <p>Attualmente lavoro in ambito sociale come orientatrice in progetti rivolti a persone in condizioni di fragilità economica e abitativa, donne vittime di violenza e giovani adulti con disabilità, realizzando anche percorsi di gruppo per la valorizzazione delle soft skills con un focus particolare sui percorsi di empowerment al femminile. Mi occupo anche di progetti di attivazione di comunità, creando opportunità di volontariato e collaborazione tra cittadini e associazioni del territorio.</p>
+        <p>Rispetto all’ambito clinico collaboro con un centro antiviolenza nel quale offro sostegno psicologico a donne vittime di violenza di genere in percorsi di sostegno e ricostruzione del senso di sé.</p>
+      </section>
+
+      <section class="contact">
+        <h2>Contattami</h2>
+        <p>Se stai considerando di iniziare un percorso e hai ancora qualche dubbio, <strong>non esitare a contattarmi</strong>. Le mie sedute si svolgono preferibilmente in presenza, ma offro anche la possibilità di appuntamenti da remoto per venire incontro alle tue esigenze. Un primo colloquio informativo può essere un passo importante per chiarire le tue domande, senza alcun impegno.</p>
+
+        <div class="links">
+          <a class="email-link" href="mailto:letiziasala.psicologa@gmail.com" aria-label="Invia una email a letiziasala.psicologa@gmail.com">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2Zm0 4-8 5-8-5V6l8 5 8-5v2Z"/></svg>
+            letiziasala.psicologa@gmail.com
+          </a>
+          <a href="https://www.linkedin.com/in/letizia-sala-psicologa-gestalt-milano/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.94 8.5H3.56V19h3.38V8.5ZM5.25 3A1.96 1.96 0 1 0 5.25 6.92 1.96 1.96 0 0 0 5.25 3ZM20.44 13c0-3.17-1.69-4.64-3.95-4.64a3.42 3.42 0 0 0-3.1 1.7V8.5h-3.38V19h3.38v-5.2c0-1.37.26-2.7 1.96-2.7 1.68 0 1.7 1.57 1.7 2.79V19h3.39v-6Z"/></svg>
+            LinkedIn
+          </a>
+          <a href="https://www.instagram.com/psicologa_sestosangiovanni/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5Zm0 2a3 3 0 0 0-3 3v10a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3V7a3 3 0 0 0-3-3H7Zm5 3a5 5 0 1 1 0 10 5 5 0 0 1 0-10Zm0 2a3 3 0 1 0 0 6 3 3 0 0 0 0-6Zm5.5-3.25a1.25 1.25 0 1 1 0 2.5 1.25 1.25 0 0 1 0-2.5Z"/></svg>
+            Instagram
+          </a>
+        </div>
+      </section>
+    </div>
+  </main>
+</body>
+</html>
